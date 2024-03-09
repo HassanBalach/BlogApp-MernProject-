@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.topbar{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 999;
+
+}
+.rightTopbar{
+    margin: 10px;
+}
+.topIcon{
+    margin: 7px;
+    cursor: pointer;
+}
+
+.topItem{
+    display: flex;
+}
+.topItemList{
+    list-style-type: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.topImage{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px;
+}
+.leftTopbar{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+}

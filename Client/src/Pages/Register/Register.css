@@ -1,0 +1,53 @@
+.register{
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(180, 228, 21, 0.5), rgba(38, 37, 37, 0.5)),
+      url("https://wallpaperaccess.com/full/1111983.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+.registerSetting h1{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+}
+.registerInfo input {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border: none;
+    outline-style: none;
+   
+    margin: 10px 0 ;
+}
+.registerInfo .registerBtn1{
+    background-color: green;
+    width: 190px;
+    padding: 12px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+
+} 
+.registerInfo .registerBtn1:active{
+    background-color: rgb(63, 66, 30);
+
+} 
+.registerInfo label{
+    font-size: 20px;
+}
+.loginBtnInRegister{
+    background-color: gray;
+    padding: 10px;
+    width: 80px;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
