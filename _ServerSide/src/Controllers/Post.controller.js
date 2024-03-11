@@ -14,6 +14,7 @@ const createPost = asyncHandler(async (req, res) => {
     throw new ApiError(404, "CatchError: Post Not Created");
   }
 });
+
 //UPDATE POST
 
 const updatePost = asyncHandler(async (req, res) => {

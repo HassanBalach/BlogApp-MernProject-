@@ -37,10 +37,28 @@
     list-style: none;
     margin: 15px;
 }
+.sideBarItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    ;
+}
 .totalSidebar{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    /* background-color: rgb(27, 27, 18); */
+    width: 340px;
 }
+.categoryCentrization{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* background-color: yellow; */
+    width: 186px;
+    gap: 15px;
+    padding-left: 60px;
+}
+
 .followus{
     margin: 20px;
     padding: 10px;

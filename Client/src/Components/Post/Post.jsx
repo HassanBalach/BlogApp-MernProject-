@@ -13,14 +13,17 @@ export default function Post({post}) {
         />
         <div className="postCate">
           {post.categories.map((cat)=>(
-            <span>{cat.name}</span>
+            <Link to={`/?user=${cat.name}`} className="linkStyle">
+              <span >{cat.name}</span>
+
+            </Link>
             
           ))}
         
         </div>
-        <Link to={`/post/${post._id}`} className="link">
+        <Link to={`/post/${post._id}`} className="linkStyle">
         <div className="postTitle">
-          <h1>{post.title}</h1>
+          <h1 >{post.title}</h1>
         </div> 
         </Link>
       
