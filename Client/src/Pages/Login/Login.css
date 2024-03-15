@@ -50,3 +50,8 @@
     top: 10px;
     right: 10px;
 }
+
+.loginBtn:disabled{
+    cursor: not-allowed;
+    background-color: black;
+}

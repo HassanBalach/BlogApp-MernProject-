@@ -27,7 +27,7 @@ const router = Router();
 //All route are for user:
 
 router.post("/register", userRegister);
-router.get("/login", userLogin);
+router.post("/login", userLogin);
 router.put("/users/:id", updateUser);
 router.delete("/users/:id", deleteUser);
 router.get("/users/:id", getUser);

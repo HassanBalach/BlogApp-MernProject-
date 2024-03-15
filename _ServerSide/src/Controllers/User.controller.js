@@ -39,9 +39,9 @@ const userRegister = asyncHandler(async (req, res) => {
 // Login of user
 const userLogin = asyncHandler(async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ username });
 
     if (!user) {
       throw new ApiError(403, "Wrong Credentials");
@@ -54,9 +54,9 @@ const userLogin = asyncHandler(async (req, res) => {
 
     const LoggedInUser = await User.findOne(user._id).select("-password");
     res
-      .status(210)
+      .status(200)
       .json(
-        new ApiResponse(210, LoggedInUser, "user is successfully logged in")
+        new ApiResponse(200, LoggedInUser, "user is successfully logged in")
       );
   } catch (error) {
     throw new ApiError("410", error);

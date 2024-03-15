@@ -1,16 +1,32 @@
 import { Link } from "react-router-dom";
 import "./Login.css";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import axios from "axios";
+import { Context } from "../../ContextApi/Context";
 
 export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
- const { dispatch , isFetching} = useContext()
+  // const ErrorMG = tr
+  const {  dispatch, isFetching } = useContext(Context);
 
-  const handleSubmit =  (e) => {
-    e.preventDefalt()
- };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "Login_Start" });
+    axios.defaults.baseURL = "http://localhost:3000";
+    try {
+      const res = await axios.post("/api/login", {
+        username: userRef.current.value,
+        password: passwordRef.current.value,
+      });
+      dispatch({ type: "Login_Success", payload: res.data });
+
+    } catch (error) {
+      dispatch({ type: "Login_Failure" });
+    }
+  };
+
+
   return (
     <div className="login">
       <div className="loginSetting">
@@ -28,7 +44,7 @@ export default function Login() {
             ref={passwordRef}
             placeholder="Enter your password..."
           />
-          <button className="loginBtn" type="submit">
+          <button className="loginBtn" type="submit" disabled={isFetching}>
             Login
           </button>
         </form>
