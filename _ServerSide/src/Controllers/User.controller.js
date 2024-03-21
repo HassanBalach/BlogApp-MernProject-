@@ -52,6 +52,7 @@ const userLogin = asyncHandler(async (req, res) => {
       throw new ApiError(412, "Wrong Credentials");
     }
 
+
     const LoggedInUser = await User.findOne(user._id).select("-password");
     res
       .status(200)
@@ -128,4 +129,8 @@ const getUser = asyncHandler(async(req,res)=>{
     throw new ApiError("410", error )
   }
 })
-export { userRegister, userLogin, updateUser, deleteUser ,getUser };
+
+//UserImageUploader
+
+
+export { userRegister, userLogin, updateUser, deleteUser ,getUser ,};

@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import { Context } from "../../ContextApi/Context";
 
 function Topbar() {
-  const {user} = useContext(Context);
+  const {user , dispatch} = useContext(Context);
+  const handleLogout = ()=>{
+  dispatch({type: "Logout"})
+  }
   return (
     <div>
       <div className="topbar">
@@ -37,7 +40,7 @@ function Topbar() {
               </Link>
             </li>
             <li className="topItemList">
-              <Link className="linkStyle" to="/login">
+              <Link className="linkStyle" to="/login" onClick={handleLogout}>
                 {user && "LOGOUT"}
               </Link>
             </li>

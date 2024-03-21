@@ -19,6 +19,7 @@ export default function Login() {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
+      // res && window.location.replace('/' + )
       dispatch({ type: "Login_Success", payload: res.data });
 
     } catch (error) {

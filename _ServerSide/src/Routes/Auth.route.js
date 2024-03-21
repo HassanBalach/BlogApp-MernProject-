@@ -19,7 +19,7 @@ import {
   createCategory,
   getCategory,
 } from "../Controllers/Category.controller.js";
-import { upload } from "../Middleware/Multer.middleware.js";
+
 
 
 const router = Router();
@@ -45,8 +45,5 @@ router.post("/category", createCategory);
 router.get("/category", getCategory);
 
 //ROUTERS FOR MULTER
-router.post("/upload", upload.single("file"), (req,res)=>{
-    res.status(200).json("Image uploaded successfully!")
-});
 
 export { router };

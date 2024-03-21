@@ -6,7 +6,7 @@ const initialState = {
   };
 
   
-  const reducer =(state, action)=>{
+  const reducer =(state, action) =>{
     switch (action.type) {
       case "Login_Start":
       return{
@@ -27,6 +27,13 @@ const initialState = {
           isFetching: false,
           error: true,
         }
+      
+      case "Logout":
+      return{
+        user: null,
+        isFetching: false,
+        error: false
+      }
 
       default:
         return state
