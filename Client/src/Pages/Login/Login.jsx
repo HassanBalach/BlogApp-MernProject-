@@ -7,20 +7,19 @@ import { Context } from "../../ContextApi/Context";
 export default function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
-  // const ErrorMG = tr
   const {  dispatch, isFetching } = useContext(Context);
+  axios.defaults.baseURL = "http://localhost:3000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "Login_Start" });
-    axios.defaults.baseURL = "http://localhost:3000";
     try {
       const res = await axios.post("/api/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
-      // res && window.location.replace('/' + )
       dispatch({ type: "Login_Success", payload: res.data });
+      // res && window.location.replace('/')
 
     } catch (error) {
       dispatch({ type: "Login_Failure" });

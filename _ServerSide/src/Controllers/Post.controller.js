@@ -3,62 +3,20 @@ import { ApiError } from "../Utiles/ApiError.js";
 import { ApiResponse } from "../Utiles/ApiResponse.js";
 import { asyncHandler } from "../Utiles/Asynco.js";
 
-import { fileUploading } from "../Utiles/Cloudinary.js";
-import { upload } from "../Middleware/Multer.middleware.js";
+
 
 // Create Post
+
 const createPost = asyncHandler(async (req, res) => {
-  /*
-  take post details 🉐
-  check either empty? 🉐
-  check either exist before or not (title,description)🉐
+  try {
+    const post = await Post.create(req.body);
 
-  
-  
-  */
-  const { title, authorName, description } = req.body;
-  console.log("REQ.BODY", req.body);
-  if ([title, authorName, description].some((fields) => fields?.trim() == "")) {
-    throw new ApiError("401", "title, authNmae and description are required ");
+    await post.save();
+    res.status(200).json(new ApiResponse(200, post));
+  } catch (error) {
+    throw new ApiError(404, "CatchError: Post Not Created");
   }
-
-  console.log(
-    `Title ${title} , AuthorName: ${authorName} , description: ${description}`
-  );
-
-  const existingPost = await Post.findOne({
-    $or: [{ title }, { description }],
-  });
-  if (existingPost) {
-    throw new ApiError(
-      "402",
-      "Same title or description are already present in the database:"
-    );
-  }
-
-  //Dealing with Images:
-
-  upload.single("image")(req, res, async (err) => {
-    if (err) {
-      throw new ApiError("403", "Error uploading image.");
-    }
-  });
-
-  const newPost = await Post.create({
-    title,
-    description,
-    authorName,
-  });
-
-  return res
-    .status(201)
-    .json(new ApiResponse(200, newPost, "Post Successfully added"));
-
-
-
-
 });
-
 //UPDATE POST
 
 const updatePost = asyncHandler(async (req, res) => {

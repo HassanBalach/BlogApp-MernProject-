@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Home.css";
 import Header from "../../Components/Header/Header";
 import Posts from "../../Components/Posts/Posts";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { Context } from "../../ContextApi/Context";
 
 function Home() {
+  const {user} = useContext(Context)
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
+  
 
   useEffect(() => {
     const postUploaded = async () => {
